@@ -1,0 +1,12 @@
+== AR.js github ==
+https://github.com/jeromeetienne/AR.js/blob/master/README.md
+
+== AR.js on medium ==
+https://medium.com/arjs
+
+https://www.creativebloq.com/news/arjs-is-bringing-augmented-reality-to-the-web
+
+
+https://aframe.io/docs/0.8.0/core/animations.html
+
+https://aframe.io/docs/0.8.0/introduction/models.html
