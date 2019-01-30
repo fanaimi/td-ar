@@ -10,3 +10,78 @@ https://www.creativebloq.com/news/arjs-is-bringing-augmented-reality-to-the-web
 https://aframe.io/docs/0.8.0/core/animations.html
 
 https://aframe.io/docs/0.8.0/introduction/models.html
+
+
+
+=========================================================
+
+
+32
+
+
+19
+I'm using the npm package "http-server" (https://www.npmjs.com/package/http-server) to set up a simple webserver, but I cannot get it to use SSL. My command in package.json is
+
+http-server -p 8000 -o -S
+with a cert.pem and key.pem in my root directory (for now). The "-o" option opens a browser to the default page, but the page is served using HTTP and not even accessible through HTTPS. I don't get any errors or warnings. I've also tried adding the "-C" and "-K" options without luck. Has any one had any success with this package?
+
+node.js ssl npm httpserver
+shareimprove this question
+asked Feb 1 '16 at 9:50
+
+delucasvb
+1,26911221
+1
+Useful guide – Abhijeet Apr 27 '17 at 4:23
+add a comment
+2 Answers
+active oldest votes
+
+86
+
+First, make sure that you have key.pem and cert.pem files. You can generate them using this command:
+
+openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+This generates a cert-key pair and it will be valid for roughly 10 years (3650 days to be exact).
+
+Then you need to run the server with -S for enabling SSL and -C for your certificate file:
+
+$ http-server -S -C cert.pem -o
+Starting up http-server, serving ./ through https
+Available on:
+  https:127.0.0.1:8080
+  https:192.168.1.101:8080
+  https:192.168.1.104:8080
+Hit CTRL-C to stop the server
+shareimprove this answer
+answered Feb 5 '16 at 18:37
+
+slomek
+2,86911114
+1
+It appears my package just needed an update. After trying everything, I saw I was running an old version... – delucasvb Feb 8 '16 at 7:33
+How can I get this to use the same key and pem files from my local machine regardless of which app or sample code I'm running? – Costa Jan 25 '17 at 23:04
+1
+BTW if you ever need a certificate from a CA I recommend using letsencrypt.org. It solved our issues here. Cheers! – pinkfloyd Aug 23 '17 at 21:02
+Suggesting for anyone who cannot get a recent version of Chrome on OSX to work....... version 65 works with this answer: stackoverflow.com/a/44058453/3997521 – petrosmm Apr 21 '18 at 22:58
+1
+With Chrome 66 I have to enable Allow invalid certificates for resources loaded from localhost in chrome://flags as it says its untrusted – Neil Apr 30 '18 at 19:25
+add a comment
+
+1
+
+Just for future reference, my problem was solved by updating the package to the latest version in package.json. I copy-pasted an old example file without updating the version numbers.
+
+
+=======================================
+https://helpcenter.gsx.com/hc/en-us/articles/115015960428-How-to-Generate-a-Self-Signed-Certificate-and-Private-Key-using-OpenSSL?mobile_site=true
+
+
+get openssl installer from :
+https://slproweb.com/products/Win32OpenSSL.html
+
+
+
+======================================
+a-frame intro https://aframe.io/docs/0.8.0/introduction/
+======================================

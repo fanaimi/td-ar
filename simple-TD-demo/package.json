@@ -1,0 +1,28 @@
+{
+  "name": "td-ar",
+  "version": "1.0.0",
+  "description": "augmented reality in the browser",
+  "main": "simple-demo/index.html",
+  "scripts": {
+    "start": "run-script-os",
+    "start:win32": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 ",
+    "start:darwin:linux": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fanaimi/td-ar.git"
+  },
+  "author": "Emiliano Fantasia, Training Dragon",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "~2.26.3",
+    "run-script-os": "1.0.3"
+  },
+  "bugs": {
+    "url": "https://github.com/fanaimi/td-ar/issues"
+  },
+  "homepage": "https://github.com/fanaimi/td-ar#readme",
+  "dependencies": {
+    "bootstrap": "~4.2.1"
+  }
+}
